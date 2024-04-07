@@ -3,8 +3,7 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 RUN mvn clean install
-
-FROM adoptopenjdk:17-jre-hotspot
+FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=build /app/target/staffsystem-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8080
